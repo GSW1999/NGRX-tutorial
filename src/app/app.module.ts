@@ -8,11 +8,12 @@ import { CounterOutputComponent } from './counter/counter-output/counter-output.
 import { CounterButtonsComponent } from './counter/counter-buttons/counter-buttons.component';
 import { StoreModule } from '@ngrx/store';
 import { CustomIncrementCounterComponent } from './counter/custom-increment-counter/custom-increment-counter.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducer} from './store/app.state';
 import { PostsListComponent } from './posts/posts-list/posts-list.component';
+import { AddPostComponent } from './posts/add-post/add-post.component';
 
 
 @NgModule({
@@ -23,14 +24,15 @@ import { PostsListComponent } from './posts/posts-list/posts-list.component';
     CounterButtonsComponent,
     CustomIncrementCounterComponent,
     HomeComponent,
-    PostsListComponent
+    PostsListComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,StoreModule.forRoot(appReducer),StoreDevtoolsModule.instrument({
       logOnly:!isDevMode()  
-    })
+    }),ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
