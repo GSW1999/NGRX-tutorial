@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CounterState } from '../counter/state/counter.state';
-import { customIncrement, updateChannelName } from '../counter/state/counter.actions';
-import { getChannelName } from '../counter/state/counter.selector';
+import { CounterState } from '../state/counter.state';
+import { customIncrement, updateChannelName } from '../state/counter.actions';
+import { getChannelName } from '../state/counter.selector';
 import { Observable } from 'rxjs';
 
 @Component({
