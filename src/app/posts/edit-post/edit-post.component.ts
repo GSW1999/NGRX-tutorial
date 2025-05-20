@@ -1,11 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { PostsState } from '../state/posts.state';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { getPostByID } from '../state/posts.selector';
-import { Post } from '../../models/posts.model';
 import { AppState } from '../../store/app.state';
 import { editPost } from '../state/posts.actions';
 
@@ -20,7 +18,7 @@ export class EditPostComponent implements OnDestroy {
   postForm: FormGroup;
   postSubscription!: Subscription;
   postId!:string|null;
-  constructor(private activatedRoute: ActivatedRoute, private store: Store<AppState>) {
+  constructor(private router:Router,private activatedRoute: ActivatedRoute, private store: Store<AppState>) {
     this.postForm = new FormGroup({
       title: new FormControl('', [Validators.required, Validators.minLength(6)]),
       description: new FormControl('', [Validators.required, Validators.minLength(10)])
@@ -42,7 +40,8 @@ export class EditPostComponent implements OnDestroy {
 
   updatePost() {
     console.log(this.postForm.value);
-    this.store.dispatch(editPost({post: { id:this.postId||undefined,title: this.postForm.value.title, description: this.postForm.value.description } }))
+    this.store.dispatch(editPost({post: { id:this.postId||undefined,title: this.postForm.value.title, description: this.postForm.value.description } }));
+    this.router.navigate(['posts']);
 
   }
 

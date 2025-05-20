@@ -8,12 +8,14 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Action</th>
+                    <th></th>
                 </tr>
                 <tr *ngFor="let post of (postsList$|async)">
                     <td>{{post.id}}</td>
                     <td>{{post.title}}</td>
                     <td>{{post.description}}</td>
                     <td><a [routerLink]="['edit-post',post.id]" class="btn btn-primary">Edit</a></td>
+                    <td><button (click)="deletePost(post.id)" class="btn btn-primary">Delete</button></td>
                 </tr>
             </table>
              <button class="btn btn-primary" routerLink="add-post">Add Post</button>

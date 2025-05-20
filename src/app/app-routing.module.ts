@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'posts', component: PostsListComponent,
     children:[
       {path:'add-post',component:AddPostComponent},
-      {path:'edit-post/:id',component:EditPostComponent}
+      {path:'edit-post/:id',component:EditPostComponent},
     ]
    }
 
