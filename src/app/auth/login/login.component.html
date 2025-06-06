@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>Login Form</h1>
+            <hr>
+            <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+                <div class="mb-3">
+                    <label>Username</label>
+                    <input type="username" class="form-control" formControlName="username">
+                    <div *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.invalid">
+                        <small class="text-danger" *ngIf="loginForm.get('username')?.errors?.['required']">Username is
+                            required</small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label>Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+                    <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+                        <small class="text-danger" *ngIf="loginForm.get('password')?.errors?.['required']">Password is
+                            required.</small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary">Login</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
